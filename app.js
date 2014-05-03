@@ -1,6 +1,6 @@
 var helpers = require("./helpers");
 var ACTIONS_FOLDER = "./actions/";
-var ACTIONS_CONFIG_FILE = "actions.json";
+var ACTIONS_CONFIG_FILE = __dirname + "/actions.json";
 var PORT = 8080;
 
 
@@ -20,4 +20,4 @@ actionsCofig.forEach(function(elem){
 
 var service = require("webs-weeia").http(actionsCofig);
 
-service(PORT);
+service(PORT, {views:__dirname + "/views"});

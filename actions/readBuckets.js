@@ -1,8 +1,13 @@
 var AWS = require("aws-sdk");
 
 
+var EC2MCred = new AWS.EC2MetadataCredentials();
 
-AWS.config.loadFromPath('./config.json');
+EC2MCred.refresh(function(err){
+	if(err){
+		AWS.config.loadFromPath('./config.json');		
+	}
+});
 
 var task =  function(request, callback){
 	var S3 = new AWS.S3();
